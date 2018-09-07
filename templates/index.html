@@ -48,25 +48,36 @@
 </table>
 <script>
     var POST_DATA = {
-        "ADD":{},
-        "DEL":{},
+        "ADD": {},
+        "DEL": {},
     };
+
     //为td绑定单击事件;
     function BindTd() {
         $(".item").click(function () {
             var room_id = $(this).attr("room_id");
             var time_id = $(this).attr("time_id");
             //alert($(this).attr("room_id"))
+            //取消预定;
             if ($(this).hasClass("active")) {
                 $(this).removeClass().empty();
+                if (POST_DATA.DEL[room_id]) {
+                    POST_DATA.DEL[room_id].push(time_id)
+                } else {
+                    POST_DATA.DEL[room_id] = [time_id,];
+                }
             }
             else if ($(this).hasClass("td_active")) {
                 $(this).removeClass("td_active");
             }
-            else {
+            else {//添加预定;
                 $(this).addClass("td_active");
-                if xxx
-                POST_DATA.ADD[room_id] = [time_id,];
+                if (POST_DATA.ADD[room_id]) {
+                    POST_DATA.ADD[room_id].push(time_id)
+                } else {
+                    POST_DATA.ADD[room_id] = [time_id,];
+                }
+
             }
         })
     }
