@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script src="/static/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="/static/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+</head>
+<body>
+<h3>会议室预定</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>会议室/时间</th>
+        {% for time_choice in time_choices %}
+            <th>{{ time_choice.1 }}</th>
+        {% endfor %}
+    </tr>
+    <tbody>
+    {% for room in room_list %}
+        <tr>
+            <td>{{ room.caption }}</td>
+            {% for time_choice in time_choices %}
+                <td></td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+    </thead>
+
+</table>
+</body>
+</html>

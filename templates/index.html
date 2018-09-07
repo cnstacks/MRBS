@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script src="/static/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="/static/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <style>
+        .active {
+            background-color: green !important;
+            color: white;
+        }
+
+        .another_active {
+            background-color: #2b669a;
+            color: white;
+        }
+
+        .td_active {
+            background-color: lightblue;
+            color: white;
+        }
+
+        .td_active {
+            background-color: lightblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h3>会议室预定</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>会议室/时间</th>
+        {% for time_choice in time_choices %}
+            <th>{{ time_choice.1 }}</th>
+        {% endfor %}
+    </tr>
+
+    </thead>
+    <tbody>
+    {{ htmls|safe }}
+    </tbody>
+</table>
+<script>
+    var POST_DATA = {
+        "ADD":{},
+        "DEL":{},
+    };
+    //为td绑定单击事件;
+    function BindTd() {
+        $(".item").click(function () {
+            var room_id = $(this).attr("room_id");
+            var time_id = $(this).attr("time_id");
+            //alert($(this).attr("room_id"))
+            if ($(this).hasClass("active")) {
+                $(this).removeClass().empty();
+            }
+            else if ($(this).hasClass("td_active")) {
+                $(this).removeClass("td_active");
+            }
+            else {
+                $(this).addClass("td_active");
+                if
+                POST_DATA.ADD[room_id] = [time_id,];
+            }
+        })
+    }
+
+    BindTd()
+</script>
+</body>
+</html>
