@@ -60,15 +60,17 @@
             //alert($(this).attr("room_id"))
             //取消预定;
             if ($(this).hasClass("active")) {
-                $(this).removeClass().empty();
+                $(this).removeClass("active").empty();
                 if (POST_DATA.DEL[room_id]) {
                     POST_DATA.DEL[room_id].push(time_id)
                 } else {
                     POST_DATA.DEL[room_id] = [time_id,];
                 }
             }
+            //临时取消预定;
             else if ($(this).hasClass("td_active")) {
                 $(this).removeClass("td_active");
+                POST_DATA.ADD[room_id].remove(time_id)
             }
             else {//添加预定;
                 $(this).addClass("td_active");
