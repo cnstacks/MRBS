@@ -1,7 +1,13 @@
-from django.test import TestCase
+class Person(object):
 
-# Create your tests here.
-for i in range(10):
-    x = i
-# for循环没有作用域;
-print(x)
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+alex = Person("alex", 34)
+egon = Person("egon", 36)
+alex.name
+alex.age
+egon.name
+egon.age

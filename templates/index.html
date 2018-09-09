@@ -46,6 +46,7 @@
     {{ htmls|safe }}
     </tbody>
 </table>
+<button class="btn btn-success pull-right keep">保存</button>
 <script>
     var POST_DATA = {
         "ADD": {},
@@ -70,7 +71,7 @@
             //临时取消预定;
             else if ($(this).hasClass("td_active")) {
                 $(this).removeClass("td_active");
-                POST_DATA.ADD[room_id].remove(time_id)
+                POST_DATA.ADD[room_id].pop()
             }
             else {//添加预定;
                 $(this).addClass("td_active");
@@ -84,7 +85,21 @@
         })
     }
 
-    BindTd()
+    BindTd();
+    //发送Ajax请求;
+    $(".keep").click(function () {
+        $.ajax({
+            url: "/book/",
+            type: "POST",
+            contentType:"application/json",
+            data: {
+              post_data:POST_DATA
+            },
+            success: function () {
+
+            }
+        })
+    })
 </script>
 </body>
 </html>

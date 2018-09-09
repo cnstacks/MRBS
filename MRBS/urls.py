@@ -17,8 +17,20 @@ from django.conf.urls import url
 from django.contrib import admin
 from app01 import views
 
+
+def get_urls():
+    temp = []
+    print("_registry", admin.site._registry)
+    for model,admin_class_obj in admin.site._registry.items():
+        print("model",model)
+        temp.append(url(r"%s/%s"%(),yuan))
+    return temp
+
+get_urls()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', views.login),
     url(r'^index/', views.index),
+    url(r'^book/', views.book),
+    url(r'^cxz/', (get_urls, None, None)),
 ]
